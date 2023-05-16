@@ -1,0 +1,73 @@
+1.Intiatlizing spring boot
+    we can easily initailize spring boot from spring intializer website by selecting the required dependencies and java versions
+
+2.Opening spring application
+    open the spring application by selecting the pom.xml file in ide
+
+3.Learn About REST Api from OOOOtube
+
+4.creating api's:to create api we need a class for creating apis with the annotation of @Requestcontroller
+    1.get Api: we create get api function by creating @Getparameter annotation by passing api name as parameter
+          @GetMapping("/hi")
+            public String sayHi(){
+                return "Voilaa we runned our api";
+            }
+
+        I. Creating get api based on params:
+                1.Using query parameter
+                    Ex://https:localhost:8080/search?q=mavin   ------> ?q=mavin is called the query param
+                        @GetMapping("/search")
+                        public String searchApi(@RequestParam String q){
+                            DataBase db = new DataBase();
+                            return db.check(q);
+                        }
+
+                2.Using Path Parameter
+                    Ex:
+                         //https:localhost:8080/users/mavin -------------> /mavin  is the path parameter given to the user
+                            @GetMapping("/users/{id}")
+                            public UserData getOneUser(@PathVariable int id){
+                                return db.getOneUser(id);
+                            }
+
+
+5.Best Part with the spring boot is it automatically generates the Object data into json automatically
+    ex:if my api returning List<UserData> then it shows the data in UserData class in json
+       like this: [
+          {
+            "id": 1,
+            "name": "mavin",
+            "age": 20
+          },
+          {
+            "id": 2,
+            "name": "manikanta",
+            "age": 30
+          }
+        ]
+
+6.Older version of writing api's in springboot:-
+    in older way api written using Requesr mapping
+    syntax:-
+        @RequestMapping(path = "/hello",method = RequestMethod.GET)
+            public String hello(){
+                return "helloooooooooooo";
+            }
+        we have to specify the Request method like post get delete etc..
+        default will be get method
+
+7.Producers and consumers:-
+    Producers and consumers is used to restrict the type of data coming from the web and send from server
+
+8.Maven:-
+    mavin is the build tool for java application which take care of installing dependencies and make them work like npm for js
+
+   How maven Work:-
+        as all build tools maven works based on repositories
+        1.it acutally contains three reposotiries
+            i.local repository ii. global repo. iii. remote repo.
+            whenever u tried to install a dependency to your code maven look in your local repository that store in your system
+            else it makes the network call to global repo to install dependecies
+            remote repository is like buliding website only for specific people like the private repository in github
+
+        you can check your local repo in C:\Users\nanin\.m2\repository
